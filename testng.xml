@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="BookMyShow">
+	<test name="TestBookMyShow">
+		<classes>
+			<class name="com.BookMyShow.BookMyShowAutomation">
+				<methods>
+					<include name = "testBrowser"/>
+					<include name = "SignIn"/>
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>

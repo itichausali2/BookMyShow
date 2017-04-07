@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="BookMyShow" duration-ms="17240" started-at="2017-04-07T10:44:57Z" finished-at="2017-04-07T10:45:14Z">
+    <groups>
+    </groups>
+    <test name="TestBookMyShow" duration-ms="17240" started-at="2017-04-07T10:44:57Z" finished-at="2017-04-07T10:45:14Z">
+      <class name="com.BookMyShow.BookMyShowAutomation">
+        <test-method status="PASS" signature="testBrowser()[pri:0, instance:com.BookMyShow.BookMyShowAutomation@e45eb6]" name="testBrowser" is-config="true" duration-ms="13274" started-at="2017-04-07T16:14:57Z" finished-at="2017-04-07T16:15:10Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testBrowser -->
+        <test-method status="PASS" signature="SignIn()[pri:0, instance:com.BookMyShow.BookMyShowAutomation@e45eb6]" name="SignIn" duration-ms="3953" started-at="2017-04-07T16:15:10Z" finished-at="2017-04-07T16:15:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SignIn -->
+      </class> <!-- com.BookMyShow.BookMyShowAutomation -->
+    </test> <!-- TestBookMyShow -->
+  </suite> <!-- BookMyShow -->
+</testng-results>
