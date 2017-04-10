@@ -21,7 +21,7 @@ public class BookMyShowAutomation {
 	public void  testBrowser() {
 		System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+"//Drivers/geckodriver.exe");
 		driver = new FirefoxDriver();
-		driver.get("https://in.bookmyshow.com");
+		driver.get("https://in.bookmyshow.com/");
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	}
 	@Test
@@ -32,13 +32,14 @@ public class BookMyShowAutomation {
 		driver.findElement(By.xpath(".//*[@id='signinPopup']/div/div[2]/div[1]/aside[1]/div[2]/a[2]/div/div")).click();
 		String parentWindowHandler = driver.getWindowHandle(); // Store your parent window
 		String subWindowHandler = null;
-
+		System.out.println(parentWindowHandler);
 		Set<String> handles = driver.getWindowHandles(); // get all window handles
 		Iterator<String> iterator = handles.iterator();
 		while (iterator.hasNext()){
 		    subWindowHandler = iterator.next();
 		}
 		driver.switchTo().window(subWindowHandler);
+		System.out.println(subWindowHandler);
 		driver.findElement(By.id("Email")).sendKeys("itichausali@gmail.com");
 		driver.findElement(By.id("next")).click();
 		WebElement password = driver.findElement(By.id("Passwd"));
@@ -46,8 +47,33 @@ public class BookMyShowAutomation {
 		wait.until(ExpectedConditions.visibilityOf(password)).isDisplayed();
 		driver.findElement(By.id("Passwd")).sendKeys("###messup");
 		driver.findElement(By.id("signIn")).sendKeys(Keys.ENTER);
+		driver.switchTo().window(parentWindowHandler);
+		System.out.println(subWindowHandler);
+		System.out.println(parentWindowHandler);
+		driver.findElement(By.xpath(".//*[@id='inp_RegionSearch_top']")).click();
+	WebElement element =	driver.findElement(By.xpath(".//*[@id='inp_RegionSearch_top']"));
+	element.sendKeys("Ghaziabad");
+	element.sendKeys(Keys.ENTER);
+		
 
 	
+	}
+	@Test
+	public void testLocation() {
+		Set handles = driver.getWindowHandles();
+		 
+        System.out.println(handles);
+
+        // Pass a window handle to the other window
+
+        for (String handle1 : driver.getWindowHandles()) {
+
+        	System.out.println(handle1);
+
+        	driver.switchTo().window(handle1);
+
+        	}
+		driver.findElement(By.linkText("MOVIES")).click();
 	}
 
 }
