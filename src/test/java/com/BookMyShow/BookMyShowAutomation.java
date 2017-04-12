@@ -22,14 +22,13 @@ public class BookMyShowAutomation {
 		System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+"//Drivers/geckodriver.exe");
 		driver = new FirefoxDriver();
 		driver.get("https://in.bookmyshow.com/");
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
-	@Test
-	public void SignIn() {
+	@Test(priority=1)
+	public void signIn() {
 		driver.findElement(By.linkText("SIGN IN")).click();
-		
-		   
 		driver.findElement(By.xpath(".//*[@id='signinPopup']/div/div[2]/div[1]/aside[1]/div[2]/a[2]/div/div")).click();
+		System.out.println("executed");
 		String parentWindowHandler = driver.getWindowHandle(); // Store your parent window
 		String subWindowHandler = null;
 		System.out.println(parentWindowHandler);
@@ -38,6 +37,8 @@ public class BookMyShowAutomation {
 		while (iterator.hasNext()){
 		    subWindowHandler = iterator.next();
 		}
+		
+		
 		driver.switchTo().window(subWindowHandler);
 		System.out.println(subWindowHandler);
 		driver.findElement(By.id("Email")).sendKeys("itichausali@gmail.com");
@@ -47,33 +48,23 @@ public class BookMyShowAutomation {
 		wait.until(ExpectedConditions.visibilityOf(password)).isDisplayed();
 		driver.findElement(By.id("Passwd")).sendKeys("###messup");
 		driver.findElement(By.id("signIn")).sendKeys(Keys.ENTER);
-		driver.switchTo().window(parentWindowHandler);
+	//	driver.switchTo().window(parentWindowHandler);
 		System.out.println(subWindowHandler);
 		System.out.println(parentWindowHandler);
-		driver.findElement(By.xpath(".//*[@id='inp_RegionSearch_top']")).click();
-	WebElement element =	driver.findElement(By.xpath(".//*[@id='inp_RegionSearch_top']"));
-	element.sendKeys("Ghaziabad");
-	element.sendKeys(Keys.ENTER);
+	
 		
 
 	
 	}
-	@Test
+	@Test(priority=2)
 	public void testLocation() {
-		Set handles = driver.getWindowHandles();
-		 
-        System.out.println(handles);
+		WebElement element =	driver.findElement(By.xpath(".//*[@id='inp_RegionSearch_top']"));
+		element.sendKeys("Ghaziabad");
+		System.out.println("executed again");
+		element.sendKeys(Keys.ENTER);
+		driver.findElement(By.xpath(".//*[@id='navbar']/div[2]/div/ul[1]/li[2]/a")).click();
 
-        // Pass a window handle to the other window
-
-        for (String handle1 : driver.getWindowHandles()) {
-
-        	System.out.println(handle1);
-
-        	driver.switchTo().window(handle1);
-
-        	}
-		driver.findElement(By.linkText("MOVIES")).click();
+		
 	}
 
 }

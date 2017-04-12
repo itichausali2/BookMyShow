@@ -6,7 +6,8 @@
 			<class name="com.BookMyShow.BookMyShowAutomation">
 				<methods>
 					<include name = "testBrowser"/>
-					<include name = "SignIn"/>
+					<include name = "signIn"/>
+					<include name="testLocation"/>
 				</methods>
 			</class>
 		</classes>
